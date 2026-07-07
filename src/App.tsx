@@ -7,8 +7,8 @@ import { GetBackground, type CellBackgroundData } from "./Visualisation";
 
 function App() {
   const [failChance, setFailChance] = useState(80);
-  const [xSize, setXSize] = useState(79);
-  const [ySize, setYSize] = useState(19);
+  const [xSize, setXSize] = useState(63);
+  const [ySize, setYSize] = useState(15);
   const cellSize = 25;
 
   const [background, setBackground] = useState<CellBackgroundData[]>([]);

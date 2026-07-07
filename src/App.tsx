@@ -77,7 +77,7 @@ function App() {
 
           <Slider
             value={failChance}
-            onChange={(e, value) =>
+            onChange={(_, value) =>
               setFailChance(value as number)
             }
             min={0}
@@ -93,7 +93,7 @@ function App() {
 
           <Slider
             value={xSize}
-            onChange={(e, value) =>
+            onChange={(_, value) =>
               setXSize(value as number)
             }
             min={1}
@@ -109,7 +109,7 @@ function App() {
 
           <Slider
             value={ySize}
-            onChange={(e, value) =>
+            onChange={(_, value) =>
               setYSize(value as number)
             }
             min={1}

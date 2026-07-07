@@ -37,7 +37,7 @@ export function GetMaze(data: VisualisationData): CellVisualisationData[] {
 export function GetBackground(data: VisualisationData): CellBackgroundData[]{
     let background: CellBackgroundData[] = [];
 
-    data.blueprint.forEach((value, key) => {
+    data.blueprint.forEach((_, key) => {
         let cellBackgroundData = GetCellBackground(key, data.cellSize);
         background.push(cellBackgroundData);
     })

@@ -97,7 +97,7 @@ function App() {
               setXSize(value as number)
             }
             min={1}
-            max={79}
+            max={63}
           />
         </Box>
 
@@ -113,7 +113,7 @@ function App() {
               setYSize(value as number)
             }
             min={1}
-            max={19}
+            max={15}
           />
         </Box>
 

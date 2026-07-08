@@ -1,44 +1,83 @@
-# Procedural Maze Generator with SVG Rendering
+Procedural Maze Generator
 
-A lightweight, high-performance interactive web application that handles procedural maze generation. This project demonstrates how gamedev-inspired algorithmic thinking (data-driven design and strict blueprint decoupling) can be seamlessly integrated into modern web tech stack like **React**, **TypeScript**, and **Vector Graphics (SVG)**.
+An interactive web application that generates procedural mazes and renders them using SVG. The project focuses on clean separation between generation logic and rendering, demonstrating how an algorithmic data model can drive a modern React application.
 
-## Demo
+Demo
 
-https://VuikoY.github.io/ProceduralMazeGenerator/
-
-## Source Code
-
+Live Demo:
+https://vuikoy.github.io/ProceduralMazeGenerator/
+Source Code:
 https://github.com/VuikoY/ProceduralMazeGenerator
----
 
-## 🛠️ Tech Stack & Architecture
+Features
+Procedural maze generation
+Adjustable maze dimensions
+Configurable generation difficulty
+SVG-based rendering
+Interactive controls built with Material UI
+Strong separation between generation logic and presentation
+Tech Stack
+React
+TypeScript
+Material UI
+SVG
+Architecture
 
-* **Framework:** React 18+ (Functional Components & Hooks)
-* **Language:** TypeScript (Strict typing for all structures and contexts)
-* **UI Components:** Material UI (MUI) for responsive controls
-* **Rendering Layer:** Scalable Vector Graphics (SVG) with raw geometric `<line>` components (Zero heavy canvas or overhead `<div>` elements)
+The project is divided into three independent layers.
 
-### The Architectural Core
-The application follows a strict **Data-Driven Architecture** separated into three isolation layers:
-1. **The Blueprint Layer (`MazeBlueprint`):** Pure abstract data structures. The generation logic knows absolutely nothing about pixels, web browsers, or rendering. It merely builds a mathematical map (`Map<string, Set<CellData>>`) based on configuration rules.
-2. **The Visualisation Adapter (`Visualisation.tsx`):** A conversion layer that parses abstract spatial cell coordinates, scales them by cellular configurations, and maps out actual 2D geometric vector points ($x_1, y_1, x_2, y_2$).
-3. **The View Component (`Maze`):** A declarative UI component that receives the computed array of vector walls and instantly draws them onto an optimized `<svg>` view canvas using native hardware-accelerated browser line vectors.
+1. Maze Generation (MazeBlueprint.ts)
 
----
+Contains the procedural generation algorithm.
 
-## ⚡ Key Features & Engineering Highlights
+The generator produces an abstract maze representation using:
 
-* **Procedural Context Control:** Real-time generation variables such as grid size ($X \times Y$), visual cell scale, and a difficulty metric defined by custom structural fail chances.
-* **SVG Optimization over DOM Canvas:** By avoiding thousands of styled HTML `div` blocks, the app guarantees exceptional performance and layout responsiveness. The vector map scales dynamically to any screen resolution without blurring.
-* **Game Development Blueprint Pattern:** Reuses reliable procedural gamedev patterns inside a stateless web ecosystem, showcasing how logical data state determines view presentation instead of keeping state in visual objects.
+Map<string, Set<CellData>>
 
----
+This layer contains no rendering logic and has no dependency on React or SVG.
 
-## 📂 Project Structure Overview
+2. Visualization (Visualisation.ts)
 
-```text
+Converts the abstract maze representation into drawable geometry.
+
+Each cell is transformed into SVG line coordinates:
+
+(x1, y1) -> (x2, y2)
+
+The visualization layer is responsible only for mapping data into graphical primitives.
+
+3. React View (Maze)
+
+Receives prepared geometry and renders the maze using native SVG elements.
+
+The React component does not generate the maze itself. It simply displays the data produced by the previous layers.
+
+Project Structure
 src/
-├── App.tsx             # App Entry, Layout Configuration, and State Orchestration
-├── main.tsx            # React Virtual DOM Mounting Point
-├── MazeBlueprint.ts    # [Abstract Data Layer] Mathematical generation structures
-└── Visualisation.tsx   # [Presentation Layer] Vectors mapping and the SVG View Component
+├── App.tsx              # Application entry point
+├── main.tsx             # React bootstrap
+├── MazeBlueprint.ts     # Maze generation logic
+└── Visualisation.tsx    # SVG conversion and rendering
+How It Works
+The user selects maze parameters.
+The generator creates an abstract maze blueprint.
+The visualization layer converts the blueprint into SVG line coordinates.
+React renders the generated geometry.
+
+This separation allows the generation algorithm to remain completely independent from the rendering implementation.
+
+Running Locally
+git clone https://github.com/VuikoY/ProceduralMazeGenerator.git
+
+cd ProceduralMazeGenerator
+
+npm install
+
+npm run dev
+
+Possible Improvements
+Export generated mazes as SVG or PNG
+Multiple generation algorithms
+Pathfinding visualization
+Maze solving animation
+Adjustable wall thickness and colors
+Animated generation process

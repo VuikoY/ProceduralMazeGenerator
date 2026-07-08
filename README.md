@@ -2,8 +2,13 @@
 
 A lightweight, high-performance interactive web application that handles procedural maze generation. This project demonstrates how gamedev-inspired algorithmic thinking (data-driven design and strict blueprint decoupling) can be seamlessly integrated into modern web tech stack like **React**, **TypeScript**, and **Vector Graphics (SVG)**.
 
-🚀 **[Live Demo Link]** *(<- Replace this with the actual Vercel / GitHub Pages link after deployment)*
+## Demo
 
+https://VuikoY.github.io/ProceduralMazeGenerator/
+
+## Source Code
+
+https://github.com/VuikoY/ProceduralMazeGenerator
 ---
 
 ## 🛠️ Tech Stack & Architecture
